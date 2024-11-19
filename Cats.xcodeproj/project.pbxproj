@@ -21,6 +21,9 @@
 		BB23F1CE2CECAD890024CDEF /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CD2CECAD890024CDEF /* Cat.swift */; };
 		BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CF2CECAEAD0024CDEF /* Router.swift */; };
 		BB23F1D22CECAF2D0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */; };
+		BB23F1D42CECB0EA0024CDEF /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D32CECB0EA0024CDEF /* CatImage.swift */; };
+		BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D52CECB11C0024CDEF /* CatBreed.swift */; };
+		BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		BB23F1CD2CECAD890024CDEF /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		BB23F1CF2CECAEAD0024CDEF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = ../../../NetworkError.swift; sourceTree = "<group>"; };
+		BB23F1D32CECB0EA0024CDEF /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
+		BB23F1D52CECB11C0024CDEF /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
+		BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				BB23F1CD2CECAD890024CDEF /* Cat.swift */,
+				BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */,
+				BB23F1D32CECB0EA0024CDEF /* CatImage.swift */,
+				BB23F1D52CECB11C0024CDEF /* CatBreed.swift */,
 			);
 			path = Cat;
 			sourceTree = "<group>";
@@ -295,12 +304,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */,
+				BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */,
 				BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */,
 				BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */,
 				BB23F1A52CECAC650024CDEF /* Cats.xcdatamodeld in Sources */,
+				BB23F1D42CECB0EA0024CDEF /* CatImage.swift in Sources */,
 				BB23F1A22CECAC650024CDEF /* Persistence.swift in Sources */,
 				BB23F1CE2CECAD890024CDEF /* Cat.swift in Sources */,
 				BB23F1D22CECAF2D0024CDEF /* NetworkError.swift in Sources */,
+				BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */,
 				BB23F19B2CECAC630024CDEF /* ContentView.swift in Sources */,
 				BB23F1992CECAC630024CDEF /* CatsApp.swift in Sources */,
 			);

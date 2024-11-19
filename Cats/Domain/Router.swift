@@ -11,19 +11,40 @@ import Foundation
 enum Router: URLRequestConvertible {
 
   case getCats
+  case getCat(breed: String)
+  case addVote(value: Int, id: String)
 
   var endpoint: String {
     switch self {
     case .getCats:
       return "v1/images/"
+    case .getCat(breed: let breed):
+      return "v1/images/search?breed_ids=\(breed)"
+    case .addVote:
+      return "v1/votes"
     }
   }
 
-  var method: String {
+  var method: RequestMethod {
     switch self {
-    default: return "GET"
+    case .addVote:
+      return .post
+    default:
+      return .get
     }
   }
+
+  var postData: [String: Any]? {
+    switch self {
+    case .addVote(let value, let id):
+      return [
+        "value" : value,
+        "image_id" : id]
+    default:
+      return nil
+    }
+  }
+
 
   func makeURLRequest(_ baseURL: String) throws -> URLRequest {
     guard let url = URL(string: baseURL + endpoint) else {
@@ -31,8 +52,29 @@ enum Router: URLRequestConvertible {
     }
 
     var request = URLRequest(url: url)
-    request.httpMethod = method
+    request.httpMethod = method.rawValue
 
+    switch method {
+    case .post:
+      if let postData = postData {
+      do {
+          request.httpBody = try JSONSerialization.data(withJSONObject: postData, options: [])
+          request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        } catch {
+          throw NetworkError.invalidBody
+        }
+      }
+    default:
+      break
+    }
     return request
   }
+}
+
+enum RequestMethod: String {
+  case delete = "DELETE"
+  case get = "GET"
+  case patch = "PATCH"
+  case post = "POST"
+  case put = "PUT"
 }
