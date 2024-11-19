@@ -18,9 +18,7 @@
 		BB23F1BB2CECAC650024CDEF /* CatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1BA2CECAC650024CDEF /* CatsUITestsLaunchTests.swift */; };
 		BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1C82CECACBB0024CDEF /* NetworkService.swift */; };
 		BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CA2CECACF00024CDEF /* CatService.swift */; };
-		BB23F1CE2CECAD890024CDEF /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CD2CECAD890024CDEF /* Cat.swift */; };
 		BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CF2CECAEAD0024CDEF /* Router.swift */; };
-		BB23F1D22CECAF2D0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */; };
 		BB23F1D42CECB0EA0024CDEF /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D32CECB0EA0024CDEF /* CatImage.swift */; };
 		BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D52CECB11C0024CDEF /* CatBreed.swift */; };
 		BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
@@ -58,12 +56,11 @@
 		BB23F1BA2CECAC650024CDEF /* CatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BB23F1C82CECACBB0024CDEF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BB23F1CA2CECACF00024CDEF /* CatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatService.swift; sourceTree = "<group>"; };
-		BB23F1CD2CECAD890024CDEF /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		BB23F1CF2CECAEAD0024CDEF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = ../../../NetworkError.swift; sourceTree = "<group>"; };
 		BB23F1D32CECB0EA0024CDEF /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
 		BB23F1D52CECB11C0024CDEF /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 		BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
+		BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +115,6 @@
 				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
 				BB23F1C72CECACAE0024CDEF /* Domain */,
 				BB23F19C2CECAC650024CDEF /* Assets.xcassets */,
-				BB23F1A12CECAC650024CDEF /* Persistence.swift */,
-				BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */,
 				BB23F19E2CECAC650024CDEF /* Preview Content */,
 			);
 			path = Cats;
@@ -153,24 +148,41 @@
 		BB23F1C72CECACAE0024CDEF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				BB23F1C82CECACBB0024CDEF /* NetworkService.swift */,
-				BB23F1CC2CECAD510024CDEF /* Cat */,
-				BB23F1CA2CECACF00024CDEF /* CatService.swift */,
-				BB23F1CF2CECAEAD0024CDEF /* Router.swift */,
-				BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */,
+				BB23F1E12CECBC350024CDEF /* DB */,
+				BB23F1D92CECBBDC0024CDEF /* Network */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		BB23F1CC2CECAD510024CDEF /* Cat */ = {
+		BB23F1CC2CECAD510024CDEF /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				BB23F1CD2CECAD890024CDEF /* Cat.swift */,
 				BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */,
 				BB23F1D32CECB0EA0024CDEF /* CatImage.swift */,
 				BB23F1D52CECB11C0024CDEF /* CatBreed.swift */,
 			);
-			path = Cat;
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		BB23F1D92CECBBDC0024CDEF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F1CC2CECAD510024CDEF /* Entities */,
+				BB23F1C82CECACBB0024CDEF /* NetworkService.swift */,
+				BB23F1CA2CECACF00024CDEF /* CatService.swift */,
+				BB23F1CF2CECAEAD0024CDEF /* Router.swift */,
+				BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BB23F1E12CECBC350024CDEF /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F1A12CECAC650024CDEF /* Persistence.swift */,
+				BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +322,6 @@
 				BB23F1A52CECAC650024CDEF /* Cats.xcdatamodeld in Sources */,
 				BB23F1D42CECB0EA0024CDEF /* CatImage.swift in Sources */,
 				BB23F1A22CECAC650024CDEF /* Persistence.swift in Sources */,
-				BB23F1CE2CECAD890024CDEF /* Cat.swift in Sources */,
-				BB23F1D22CECAF2D0024CDEF /* NetworkError.swift in Sources */,
 				BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */,
 				BB23F19B2CECAC630024CDEF /* ContentView.swift in Sources */,
 				BB23F1992CECAC630024CDEF /* CatsApp.swift in Sources */,
