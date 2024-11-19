@@ -1,5 +1,5 @@
 //
-//  TestNetwork.swift
+//  ManagerTests.swift
 //  CatsTests
 //
 //  Created by federico piccirilli on 19/11/2024.
@@ -8,9 +8,10 @@
 import Foundation
 import XCTest
 
-class NetworkTests: XCTestCase {
+class ManagerTests: XCTestCase {
 
   var client: CatNetworkService!
+  var manager: CatManager!
 
   override func setUp() {
     client = CatNetworkService(urlSession: {
@@ -18,33 +19,12 @@ class NetworkTests: XCTestCase {
       configuration.protocolClasses = [MockURLProtocol.self]
       return URLSession(configuration: configuration)
     }())
+
+    manager = CatManager(networkClient: client)
   }
 
   override func tearDown() {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
-  }
-
-  func testGetImages () {
-    let jsonData = """
-[{"id":"38i","url":"https://cdn2.thecatapi.com/images/38i.jpg","width":1024,"height":680},{"id":"3p4","url":"https://cdn2.thecatapi.com/images/3p4.gif","width":294,"height":221},{"id":"a13","url":"https://cdn2.thecatapi.com/images/a13.jpg","width":500,"height":332},{"id":"bgc","url":"https://cdn2.thecatapi.com/images/bgc.png","width":500,"height":373},{"id":"cti","url":"https://cdn2.thecatapi.com/images/cti.jpg","width":640,"height":480},{"id":"e1f","url":"https://cdn2.thecatapi.com/images/e1f.jpg","width":834,"height":1200},{"id":"e9s","url":"https://cdn2.thecatapi.com/images/e9s.jpg","width":400,"height":500},{"id":"MTg2NjU5NA","url":"https://cdn2.thecatapi.com/images/MTg2NjU5NA.jpg","width":560,"height":644},{"id":"MjA0OTk3Mg","url":"https://cdn2.thecatapi.com/images/MjA0OTk3Mg.jpg","width":2592,"height":1944},{"id":"MjA3NDUzNg","url":"https://cdn2.thecatapi.com/images/MjA3NDUzNg.jpg","width":720,"height":540}]
-""".data(using: .utf8)!
-    MockURLProtocol.error = nil
-    MockURLProtocol.requestHandler = { request in
-      let response = HTTPURLResponse(url: URL(string: "https://theiosdude.api.com/test")!,
-                                     statusCode: 200,
-                                     httpVersion: nil,
-                                     headerFields: ["Content-Type": "application/json"])!
-      return (response, jsonData)
-    }
-
-    Task {
-      do {
-        let cats = try await client.fetchCatImages(by: nil)
-        assert(!cats.isEmpty)
-      } catch {
-        assert(false)
-      }
-    }
   }
 
   func testGetBreed () {
@@ -172,7 +152,7 @@ class NetworkTests: XCTestCase {
     "wikipedia_url": "https://en.wikipedia.org/wiki/American_Bobtail",
     "hypoallergenic": 0,
     "reference_image_id": "hBXicehMA"
-  }]
+  },
 """.data(using: .utf8)!
     MockURLProtocol.error = nil
     MockURLProtocol.requestHandler = { request in
@@ -182,68 +162,10 @@ class NetworkTests: XCTestCase {
                                      headerFields: ["Content-Type": "application/json"])!
       return (response, jsonData)
     }
-    Task {
-      do {
-        let cats = try await client.getCats(by: "beng")
-        print(cats)
-        assert(!cats.isEmpty)
-      } catch let error as NetworkError {
-        assert(false)
-      }
-    }
-  }
 
-  func testVote() {
-    let jsonData = """
-    {
-    "message": "SUCCESS",
-    "id": 1120951,
-    "image_id": "asf2",
-    "sub_id": "my-user-1234",
-    "value": 1,
-    "country_code": "AU"
-    }
-    """.data(using: .utf8)!
-    MockURLProtocol.error = nil
-    MockURLProtocol.requestHandler = { request in
-      let response = HTTPURLResponse(url: URL(string: "https://theiosdude.api.com/test")!,
-                                     statusCode: 201,
-                                     httpVersion: nil,
-                                     headerFields: ["Content-Type": "application/json"])!
-      return (response, jsonData)
-    }
     Task {
-      let response = try await client.addVote(vote: -1, imageId: "ae52fa")
-      assert(response.message == "SUCCESS")
-    }
-  }
-
-  func testInvalidResponse() {
-    let jsonData = """
-    {
-    "message": "SUCCESS",
-    "id": 1120951,
-    "image_id": "asf2",
-    "sub_id": "my-user-1234",
-    "value": 1,
-    "country_code": "AU"
-    }
-    """.data(using: .utf8)!
-    MockURLProtocol.error = nil
-    MockURLProtocol.requestHandler = { request in
-      let response = HTTPURLResponse(url: URL(string: "https://theiosdude.api.com/test")!,
-                                     statusCode: 404,
-                                     httpVersion: nil,
-                                     headerFields: ["Content-Type": "application/json"])!
-      return (response, jsonData)
-    }
-    Task {
-      do {
-        _ = try await client.addVote(vote: -1, imageId: "beng")
-        assert(false)
-      } catch let error as NetworkError {
-        assert(type(of: error) == type(of: NetworkError.requestFailed(statusCode: 404)))
-      }
+      _ = await manager.searchByBreed("beng")
+      assert(!manager.catBreeds.isEmpty)
     }
   }
 }

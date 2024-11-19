@@ -10,7 +10,7 @@ import Foundation
 protocol CatServiceProtocol {
   func fetchCatImages(by string: String?) async throws -> [CatImage]
   func getCats(by breed: String) async throws -> [CatBreed]
-  func addVote(vote: Int, id: String) async throws -> DefaultResponse
+  func addVote(vote: Int, imageId: String) async throws -> DefaultResponse
 }
 
 class CatNetworkService: BaseNetworkService<Router>, CatServiceProtocol {
@@ -23,7 +23,7 @@ class CatNetworkService: BaseNetworkService<Router>, CatServiceProtocol {
     return try await request([CatBreed].self, router: .getCat(breed: breed))
   }
 
-  func addVote(vote: Int, id: String) async throws -> DefaultResponse {
-    return try await request(DefaultResponse.self, router: .addVote(value: vote, id: id))
+  func addVote(vote: Int, imageId: String) async throws -> DefaultResponse {
+    return try await request(DefaultResponse.self, router: .addVote(value: vote, id: imageId))
   }
 }

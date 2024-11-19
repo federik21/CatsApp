@@ -34,6 +34,8 @@
 		BB23F1F82CECBF0A0024CDEF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CF2CECAEAD0024CDEF /* Router.swift */; };
 		BB23F1F92CECBF0A0024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
 		BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1C82CECACBB0024CDEF /* NetworkService.swift */; };
+		BB23F1FC2CECD9840024CDEF /* ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1FB2CECD9840024CDEF /* ManagerTests.swift */; };
+		BB23F1FD2CECD9A80024CDEF /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1E42CECBD4A0024CDEF /* CatManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,7 @@
 		BB23F1E72CECBE660024CDEF /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		BB23F1EA2CECBEB00024CDEF /* MockUrlSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlSession.swift; sourceTree = "<group>"; };
 		BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		BB23F1FB2CECD9840024CDEF /* ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,7 @@
 			children = (
 				BB23F1AE2CECAC650024CDEF /* CatsTests.swift */,
 				BB23F1E72CECBE660024CDEF /* NetworkTests.swift */,
+				BB23F1FB2CECD9840024CDEF /* ManagerTests.swift */,
 				BB23F1E92CECBE8F0024CDEF /* TestsUtils */,
 			);
 			path = CatsTests;
@@ -376,11 +380,13 @@
 				BB23F1E82CECBE660024CDEF /* NetworkTests.swift in Sources */,
 				BB23F1F42CECBF0A0024CDEF /* CatBreed.swift in Sources */,
 				BB23F1F52CECBF0A0024CDEF /* CatImage.swift in Sources */,
+				BB23F1FD2CECD9A80024CDEF /* CatManager.swift in Sources */,
 				BB23F1F62CECBF0A0024CDEF /* NetworkError.swift in Sources */,
 				BB23F1F72CECBF0A0024CDEF /* CatService.swift in Sources */,
 				BB23F1F82CECBF0A0024CDEF /* Router.swift in Sources */,
 				BB23F1F92CECBF0A0024CDEF /* DefaultResponse.swift in Sources */,
 				BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */,
+				BB23F1FC2CECD9840024CDEF /* ManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
