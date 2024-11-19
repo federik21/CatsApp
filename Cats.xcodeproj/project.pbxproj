@@ -24,6 +24,7 @@
 		BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
 		BB23F1E22CECBCBE0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
 		BB23F1E32CECBCBE0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
+		BB23F1E52CECBD4A0024CDEF /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1E42CECBD4A0024CDEF /* CatManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		BB23F1D52CECB11C0024CDEF /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
 		BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BB23F1E42CECBD4A0024CDEF /* CatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				BB23F1982CECAC630024CDEF /* CatsApp.swift */,
 				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
+				BB23F1E62CECBD4D0024CDEF /* Manager */,
 				BB23F1C72CECACAE0024CDEF /* Domain */,
 				BB23F19C2CECAC650024CDEF /* Assets.xcassets */,
 				BB23F19E2CECAC650024CDEF /* Preview Content */,
@@ -185,6 +188,14 @@
 				BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */,
 			);
 			path = DB;
+			sourceTree = "<group>";
+		};
+		BB23F1E62CECBD4D0024CDEF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F1E42CECBD4A0024CDEF /* CatManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +330,7 @@
 			files = (
 				BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */,
 				BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */,
+				BB23F1E52CECBD4A0024CDEF /* CatManager.swift in Sources */,
 				BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */,
 				BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */,
 				BB23F1A52CECAC650024CDEF /* Cats.xcdatamodeld in Sources */,
