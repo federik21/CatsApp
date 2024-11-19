@@ -22,6 +22,8 @@
 		BB23F1D42CECB0EA0024CDEF /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D32CECB0EA0024CDEF /* CatImage.swift */; };
 		BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D52CECB11C0024CDEF /* CatBreed.swift */; };
 		BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
+		BB23F1E22CECBCBE0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
+		BB23F1E32CECBCBE0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -324,6 +326,7 @@
 				BB23F1A22CECAC650024CDEF /* Persistence.swift in Sources */,
 				BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */,
 				BB23F19B2CECAC630024CDEF /* ContentView.swift in Sources */,
+				BB23F1E22CECBCBE0024CDEF /* NetworkError.swift in Sources */,
 				BB23F1992CECAC630024CDEF /* CatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB23F1AF2CECAC650024CDEF /* CatsTests.swift in Sources */,
+				BB23F1E32CECBCBE0024CDEF /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
