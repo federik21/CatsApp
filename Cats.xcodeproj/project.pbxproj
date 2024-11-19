@@ -16,6 +16,11 @@
 		BB23F1AF2CECAC650024CDEF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1AE2CECAC650024CDEF /* CatsTests.swift */; };
 		BB23F1B92CECAC650024CDEF /* CatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1B82CECAC650024CDEF /* CatsUITests.swift */; };
 		BB23F1BB2CECAC650024CDEF /* CatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1BA2CECAC650024CDEF /* CatsUITestsLaunchTests.swift */; };
+		BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1C82CECACBB0024CDEF /* NetworkService.swift */; };
+		BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CA2CECACF00024CDEF /* CatService.swift */; };
+		BB23F1CE2CECAD890024CDEF /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CD2CECAD890024CDEF /* Cat.swift */; };
+		BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CF2CECAEAD0024CDEF /* Router.swift */; };
+		BB23F1D22CECAF2D0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		BB23F1B42CECAC650024CDEF /* CatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB23F1B82CECAC650024CDEF /* CatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsUITests.swift; sourceTree = "<group>"; };
 		BB23F1BA2CECAC650024CDEF /* CatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BB23F1C82CECACBB0024CDEF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		BB23F1CA2CECACF00024CDEF /* CatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatService.swift; sourceTree = "<group>"; };
+		BB23F1CD2CECAD890024CDEF /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		BB23F1CF2CECAEAD0024CDEF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = ../../../NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,7 @@
 			children = (
 				BB23F1982CECAC630024CDEF /* CatsApp.swift */,
 				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
+				BB23F1C72CECACAE0024CDEF /* Domain */,
 				BB23F19C2CECAC650024CDEF /* Assets.xcassets */,
 				BB23F1A12CECAC650024CDEF /* Persistence.swift */,
 				BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */,
@@ -131,6 +142,26 @@
 				BB23F1BA2CECAC650024CDEF /* CatsUITestsLaunchTests.swift */,
 			);
 			path = CatsUITests;
+			sourceTree = "<group>";
+		};
+		BB23F1C72CECACAE0024CDEF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F1C82CECACBB0024CDEF /* NetworkService.swift */,
+				BB23F1CC2CECAD510024CDEF /* Cat */,
+				BB23F1CA2CECACF00024CDEF /* CatService.swift */,
+				BB23F1CF2CECAEAD0024CDEF /* Router.swift */,
+				BB23F1D12CECAF2D0024CDEF /* NetworkError.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BB23F1CC2CECAD510024CDEF /* Cat */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F1CD2CECAD890024CDEF /* Cat.swift */,
+			);
+			path = Cat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */,
+				BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */,
+				BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */,
 				BB23F1A52CECAC650024CDEF /* Cats.xcdatamodeld in Sources */,
 				BB23F1A22CECAC650024CDEF /* Persistence.swift in Sources */,
+				BB23F1CE2CECAD890024CDEF /* Cat.swift in Sources */,
+				BB23F1D22CECAF2D0024CDEF /* NetworkError.swift in Sources */,
 				BB23F19B2CECAC630024CDEF /* ContentView.swift in Sources */,
 				BB23F1992CECAC630024CDEF /* CatsApp.swift in Sources */,
 			);
