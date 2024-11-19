@@ -8,15 +8,15 @@
 import Foundation
 
 protocol CatServiceProtocol {
-  func fetchCatImage(by string: String?) async throws -> CatImage
+  func fetchCatImages(by string: String?) async throws -> [CatImage]
   func getCat(by breed: String) async throws -> CatBreed
   func addVote(vote: Int, id: String) async throws -> DefaultResponse
 }
 
 class CatNetworkService: BaseNetworkService<Router>, CatServiceProtocol {
 
-  func fetchCatImage(by string: String?) async throws -> CatImage {
-    return try await request(CatImage.self, router: .getCats)
+  func fetchCatImages(by string: String?) async throws -> [CatImage] {
+    return try await request([CatImage].self, router: .getCats)
   }
 
   func getCat(by breed: String) async throws -> CatBreed {

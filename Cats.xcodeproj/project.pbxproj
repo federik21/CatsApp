@@ -23,8 +23,17 @@
 		BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D52CECB11C0024CDEF /* CatBreed.swift */; };
 		BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
 		BB23F1E22CECBCBE0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
-		BB23F1E32CECBCBE0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
 		BB23F1E52CECBD4A0024CDEF /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1E42CECBD4A0024CDEF /* CatManager.swift */; };
+		BB23F1E82CECBE660024CDEF /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1E72CECBE660024CDEF /* NetworkTests.swift */; };
+		BB23F1EB2CECBEB00024CDEF /* MockUrlSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1EA2CECBEB00024CDEF /* MockUrlSession.swift */; };
+		BB23F1ED2CECBEBA0024CDEF /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */; };
+		BB23F1F42CECBF0A0024CDEF /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D52CECB11C0024CDEF /* CatBreed.swift */; };
+		BB23F1F52CECBF0A0024CDEF /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D32CECB0EA0024CDEF /* CatImage.swift */; };
+		BB23F1F62CECBF0A0024CDEF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */; };
+		BB23F1F72CECBF0A0024CDEF /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CA2CECACF00024CDEF /* CatService.swift */; };
+		BB23F1F82CECBF0A0024CDEF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1CF2CECAEAD0024CDEF /* Router.swift */; };
+		BB23F1F92CECBF0A0024CDEF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */; };
+		BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1C82CECACBB0024CDEF /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +74,9 @@
 		BB23F1D72CECBA860024CDEF /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		BB23F1DA2CECBBF10024CDEF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BB23F1E42CECBD4A0024CDEF /* CatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatManager.swift; sourceTree = "<group>"; };
+		BB23F1E72CECBE660024CDEF /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		BB23F1EA2CECBEB00024CDEF /* MockUrlSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlSession.swift; sourceTree = "<group>"; };
+		BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				BB23F1AE2CECAC650024CDEF /* CatsTests.swift */,
+				BB23F1E72CECBE660024CDEF /* NetworkTests.swift */,
+				BB23F1E92CECBE8F0024CDEF /* TestsUtils */,
 			);
 			path = CatsTests;
 			sourceTree = "<group>";
@@ -196,6 +210,15 @@
 				BB23F1E42CECBD4A0024CDEF /* CatManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		BB23F1E92CECBE8F0024CDEF /* TestsUtils */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F1EA2CECBEB00024CDEF /* MockUrlSession.swift */,
+				BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */,
+			);
+			path = TestsUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,8 +370,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB23F1EB2CECBEB00024CDEF /* MockUrlSession.swift in Sources */,
 				BB23F1AF2CECAC650024CDEF /* CatsTests.swift in Sources */,
-				BB23F1E32CECBCBE0024CDEF /* NetworkError.swift in Sources */,
+				BB23F1ED2CECBEBA0024CDEF /* MockNetworkService.swift in Sources */,
+				BB23F1E82CECBE660024CDEF /* NetworkTests.swift in Sources */,
+				BB23F1F42CECBF0A0024CDEF /* CatBreed.swift in Sources */,
+				BB23F1F52CECBF0A0024CDEF /* CatImage.swift in Sources */,
+				BB23F1F62CECBF0A0024CDEF /* NetworkError.swift in Sources */,
+				BB23F1F72CECBF0A0024CDEF /* CatService.swift in Sources */,
+				BB23F1F82CECBF0A0024CDEF /* Router.swift in Sources */,
+				BB23F1F92CECBF0A0024CDEF /* DefaultResponse.swift in Sources */,
+				BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
