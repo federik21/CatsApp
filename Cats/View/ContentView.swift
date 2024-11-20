@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import Combine
 
 struct ContentView: View {
   @StateObject var viewModel: CatViewModel

@@ -11,6 +11,7 @@ import Foundation
 enum Router: URLRequestConvertible {
 
   case getCats
+  case getImageWithId(id: String)
   case getBreeds
   case getCat(breed: String)
   case addVote(value: Int, id: String)
@@ -19,6 +20,8 @@ enum Router: URLRequestConvertible {
     switch self {
     case .getCats:
       return "v1/images/"
+    case .getImageWithId(let id):
+      return "v1/images/\(id)"
     case .getBreeds:
       return "v1/breeds/"
     case .getCat(breed: let breed):

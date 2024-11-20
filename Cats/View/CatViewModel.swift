@@ -15,7 +15,7 @@ class CatViewModel: ObservableObject {
   }
 
   @Published var cats: [CatItemViewModel] = []
-  var mode: CatsViewFilter = .name
+  var mode: ViewFilter = .name
 
   private var catManager: CatManager
 
@@ -25,10 +25,14 @@ class CatViewModel: ObservableObject {
   
   func getAllBreeds() async {
     cats = await catManager.getAllBreeds().map {
-      CatItemViewModel( name: $0.name!,
-                       picUrl: "https://api.thecatapi.com/v1/images/0XYvRd7oD",
+      CatItemViewModel(name: $0.name!, picUrl: "nil",
                        isFav: false)
     }
+  }
+
+  func getCatImageUrl(_ imageId: String?) async -> URL? {
+    guard let image = imageId else { return nil }
+    return await catManager.getCatImageUrl(image)
   }
 }
 
