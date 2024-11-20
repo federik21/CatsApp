@@ -13,13 +13,12 @@ enum Vote {
 
 protocol CatManagerProtocol {
   func getFavourites() async
-  func searchByBreed(_ breed: String) async
+  func getAllBreeds() async -> [CatBreed]
+  func searchByBreed(_ breed: String) async -> [CatBreed]
   func vote(breed: String, vote: Vote) async
 }
 
 class CatManager: CatManagerProtocol {
-
-  var catBreeds = [CatBreed]()
 
   let networkClient: CatNetworkService
 
@@ -27,8 +26,13 @@ class CatManager: CatManagerProtocol {
     self.networkClient = networkClient
   }
 
-  func searchByBreed(_ breed: String) async {
-    catBreeds = try! await networkClient.getCats(by: breed)
+  func getAllBreeds() async -> [CatBreed] {
+    try! await networkClient.getBreeds()
+  }
+
+  func searchByBreed(_ breed: String) async -> [CatBreed] {
+//    try! await networkClient.getCats(by: breed)
+    []
   }
 
   func getFavourites() async {
