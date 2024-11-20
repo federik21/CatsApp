@@ -41,6 +41,12 @@
 		BBA93FD42CEDFA3400008FF9 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */; };
 		BBA93FE32CEE667E00008FF9 /* CatBreedDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE12CEE667E00008FF9 /* CatBreedDB+CoreDataClass.swift */; };
 		BBA93FE42CEE667E00008FF9 /* CatBreedDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE22CEE667E00008FF9 /* CatBreedDB+CoreDataProperties.swift */; };
+		BBA93FE62CEE6E7E00008FF9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */; };
+		BBA93FE72CEE6FB000008FF9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */; };
+		BBA93FE82CEE704200008FF9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1A12CECAC650024CDEF /* Persistence.swift */; };
+		BBA93FE92CEE704900008FF9 /* CatBreedDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE12CEE667E00008FF9 /* CatBreedDB+CoreDataClass.swift */; };
+		BBA93FEA2CEE706500008FF9 /* Cats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */; };
+		BBA93FEB2CEE70DB00008FF9 /* CatBreedDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE22CEE667E00008FF9 /* CatBreedDB+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +95,7 @@
 		BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButton.swift; sourceTree = "<group>"; };
 		BBA93FE12CEE667E00008FF9 /* CatBreedDB+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatBreedDB+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BBA93FE22CEE667E00008FF9 /* CatBreedDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatBreedDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +220,7 @@
 			children = (
 				BBA93FD92CEE627300008FF9 /* Entities */,
 				BB23F1A12CECAC650024CDEF /* Persistence.swift */,
+				BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */,
 				BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */,
 			);
 			path = DB;
@@ -384,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBA93FE62CEE6E7E00008FF9 /* DatabaseService.swift in Sources */,
 				BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */,
 				BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */,
 				BB23F1E52CECBD4A0024CDEF /* CatManager.swift in Sources */,
@@ -410,15 +419,20 @@
 			files = (
 				BB23F1EB2CECBEB00024CDEF /* MockUrlSession.swift in Sources */,
 				BB23F1AF2CECAC650024CDEF /* CatsTests.swift in Sources */,
+				BBA93FEA2CEE706500008FF9 /* Cats.xcdatamodeld in Sources */,
+				BBA93FEB2CEE70DB00008FF9 /* CatBreedDB+CoreDataProperties.swift in Sources */,
 				BB23F1ED2CECBEBA0024CDEF /* MockNetworkService.swift in Sources */,
 				BB23F1E82CECBE660024CDEF /* NetworkTests.swift in Sources */,
 				BB23F1F42CECBF0A0024CDEF /* CatBreed.swift in Sources */,
 				BB23F1F52CECBF0A0024CDEF /* CatImage.swift in Sources */,
 				BB23F1FD2CECD9A80024CDEF /* CatManager.swift in Sources */,
 				BB23F1F62CECBF0A0024CDEF /* NetworkError.swift in Sources */,
+				BBA93FE72CEE6FB000008FF9 /* DatabaseService.swift in Sources */,
+				BBA93FE82CEE704200008FF9 /* Persistence.swift in Sources */,
 				BB23F1F72CECBF0A0024CDEF /* CatService.swift in Sources */,
 				BB23F1F82CECBF0A0024CDEF /* Router.swift in Sources */,
 				BB23F1F92CECBF0A0024CDEF /* DefaultResponse.swift in Sources */,
+				BBA93FE92CEE704900008FF9 /* CatBreedDB+CoreDataClass.swift in Sources */,
 				BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */,
 				BB23F1FC2CECD9840024CDEF /* ManagerTests.swift in Sources */,
 			);

@@ -13,7 +13,7 @@ struct CatsApp: App {
 
     var body: some Scene {
         WindowGroup {
-          ContentView(viewModel: CatViewModel(catManager: CatManager(networkClient: CatNetworkService())))
+          ContentView(viewModel: CatViewModel(catManager: CatManager(networkClient: CatNetworkService(), databaseClient: CoredataService())))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

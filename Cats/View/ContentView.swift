@@ -64,6 +64,6 @@ struct ContentView: View {
 // Preview
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(viewModel: CatViewModel(catManager: CatManager(networkClient: MockNetworkService())))
+    ContentView(viewModel: CatViewModel(catManager: CatManager(networkClient: MockNetworkService(), databaseClient: CoredataService())))
   }
 }

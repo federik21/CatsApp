@@ -20,7 +20,8 @@ class ManagerTests: XCTestCase {
       return URLSession(configuration: configuration)
     }())
 
-    manager = CatManager(networkClient: client)
+    manager = CatManager(networkClient: client,
+                         databaseClient: CoredataService())
   }
 
   override func tearDown() {
