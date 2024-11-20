@@ -49,9 +49,23 @@ class CatManager: CatManagerProtocol {
     catEntity.favourite = false
     do {
       try dataBaseContext.save()
-      print("Saved CatBreed successfully.")
     } catch {
       print("Failed to save CatBreed: \(error)")
+    }
+  }
+
+  func getCachedCatBreeds() -> [CatBreed] {
+    let fetchRequest: NSFetchRequest<CatBreedDB> = CatBreedDB.fetchRequest()
+    do {
+      let cats = try dataBaseContext.fetch(fetchRequest)
+      var results = [CatBreed]()
+      for entity in cats {
+        results.append(CatBreed(from: entity))
+      }
+      return results
+    } catch {
+      print("Failed to fetch CatBreeds: \(error)")
+      return []
     }
   }
 
@@ -69,5 +83,17 @@ class CatManager: CatManagerProtocol {
   }
 
   func vote(breed: String, vote: Vote) async {
+  }
+}
+
+extension CatBreed {
+  init(from catEntity: CatBreedDB) {
+    self.id = catEntity.id
+    self.name = catEntity.name
+    self.temperament = catEntity.temperament
+    self.origin = catEntity.origin
+    self.description = catEntity.descriptionText
+    self.lifeSpan = catEntity.lifeSpan
+    self.referenceImageID = catEntity.referenceImageId
   }
 }
