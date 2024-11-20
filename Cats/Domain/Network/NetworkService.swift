@@ -9,7 +9,8 @@
 import Foundation
 
 enum APIConfig {
-  static let prodBaseUrl = "https://thecatapi.com/"
+  static let prodBaseUrl = "https://api.thecatapi.com/"
+  static let apikey = "live_zRkJnXW86zfj2v0UqW52apqtFEhRRfdhg9UmORWrn2WxPcea9oUidO4Jrc4WUK3J"
 }
 
 class BaseNetworkService<Router: URLRequestConvertible> {
@@ -46,7 +47,8 @@ class BaseNetworkService<Router: URLRequestConvertible> {
   /// - Returns:
   ///   The decoded data of the specified type.
   func request<T: Decodable>(_ returnType: T.Type, router: Router) async throws -> T {
-    let request = try router.makeURLRequest(baseURL)
+    var request = try router.makeURLRequest(baseURL)
+    request.setValue(APIConfig.apikey, forHTTPHeaderField: "x-api-key")
 
     let (data, response) = try await urlSession.data(for: request)
 
