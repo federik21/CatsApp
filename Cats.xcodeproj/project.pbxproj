@@ -36,6 +36,9 @@
 		BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1C82CECACBB0024CDEF /* NetworkService.swift */; };
 		BB23F1FC2CECD9840024CDEF /* ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1FB2CECD9840024CDEF /* ManagerTests.swift */; };
 		BB23F1FD2CECD9A80024CDEF /* CatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1E42CECBD4A0024CDEF /* CatManager.swift */; };
+		BB23F2002CECF4940024CDEF /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1FF2CECF4940024CDEF /* CatViewModel.swift */; };
+		BB23F2022CECFC9A0024CDEF /* TabbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */; };
+		BBA93FD42CEDFA3400008FF9 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,8 @@
 		BB23F1EA2CECBEB00024CDEF /* MockUrlSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlSession.swift; sourceTree = "<group>"; };
 		BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		BB23F1FB2CECD9840024CDEF /* ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTests.swift; sourceTree = "<group>"; };
+		BB23F1FF2CECF4940024CDEF /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
+		BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				BB23F1982CECAC630024CDEF /* CatsApp.swift */,
-				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
+				BB23F1FE2CECF4880024CDEF /* View */,
 				BB23F1E62CECBD4D0024CDEF /* Manager */,
 				BB23F1C72CECACAE0024CDEF /* Domain */,
 				BB23F19C2CECAC650024CDEF /* Assets.xcassets */,
@@ -223,6 +228,16 @@
 				BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */,
 			);
 			path = TestsUtils;
+			sourceTree = "<group>";
+		};
+		BB23F1FE2CECF4880024CDEF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
+				BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */,
+				BB23F1FF2CECF4940024CDEF /* CatViewModel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,11 +375,14 @@
 				BB23F1E52CECBD4A0024CDEF /* CatManager.swift in Sources */,
 				BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */,
 				BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */,
+				BB23F2022CECFC9A0024CDEF /* TabbarButton.swift in Sources */,
 				BB23F1A52CECAC650024CDEF /* Cats.xcdatamodeld in Sources */,
 				BB23F1D42CECB0EA0024CDEF /* CatImage.swift in Sources */,
 				BB23F1A22CECAC650024CDEF /* Persistence.swift in Sources */,
+				BB23F2002CECF4940024CDEF /* CatViewModel.swift in Sources */,
 				BB23F1D82CECBA860024CDEF /* DefaultResponse.swift in Sources */,
 				BB23F19B2CECAC630024CDEF /* ContentView.swift in Sources */,
+				BBA93FD42CEDFA3400008FF9 /* MockNetworkService.swift in Sources */,
 				BB23F1E22CECBCBE0024CDEF /* NetworkError.swift in Sources */,
 				BB23F1992CECAC630024CDEF /* CatsApp.swift in Sources */,
 			);
