@@ -14,18 +14,11 @@ struct ContentView: View {
 
   var body: some View {
     NavigationView {
-      VStack(spacing: 0) {
-
-        // Image Grid
+      VStack {
         ScrollView {
-          LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
-            ForEach((!viewModel.isSearching ? viewModel.cats : viewModel.filteredBreeds), id: \.self) { item in
-              VStack {
-//                AsyncImage(url: URL(string: item.picUrl))
-//                  .aspectRatio(contentMode: .fill)
-                Text(item.name)
-              }
-
+          LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
+            ForEach((getBreedsToShow()), id: \.self) { item in
+              CatItemView(item: item)
             }
           }
           .padding()
@@ -38,6 +31,7 @@ struct ContentView: View {
           TabBarButton(icon: "magnifyingglass", title: "Search", isSelected: selectedTab == 0)
             .onTapGesture {
               selectedTab = 0
+              
             }
 
           Spacer()
@@ -53,10 +47,18 @@ struct ContentView: View {
         .background(Color(.systemGray5))
       }
       .edgesIgnoringSafeArea(.bottom)
-    }.searchable(text: $viewModel.searchText)
+    }
+    .searchable((selectedTab == 0), text: $viewModel.searchText, prompt: "Search breed...")
     .task {
       await viewModel.getAllBreeds()
     }
+  }
+
+  fileprivate func getBreedsToShow() -> [CatItemViewModel] {
+    guard selectedTab == 0 else {
+      return viewModel.favouriteFilter
+    }
+    return !viewModel.isSearching ? viewModel.cats : viewModel.filteredBreeds
   }
 }
 

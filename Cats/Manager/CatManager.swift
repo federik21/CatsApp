@@ -13,8 +13,7 @@ enum Vote {
 
 protocol CatManagerProtocol {
   func getFavourites() async
-  func getAllBreeds() async -> [CatBreed]
-  func searchByBreed(_ breed: String) async -> [CatBreed]
+  func getAllBreeds() async -> [CatItemViewModel]
   func vote(breed: String, vote: Vote) async
 }
 
@@ -29,12 +28,15 @@ actor CatManager: CatManagerProtocol {
     self.databaseClient = databaseClient
   }
 
-  func getAllBreeds() async -> [CatBreed] {
+  func getAllBreeds() async -> [CatItemViewModel] {
     let catBreeds = try! await networkClient.getBreeds()
     for catBreed in catBreeds {
-//      cacheData(catBreed)
+      cacheData(catBreed)
     }
-    return catBreeds
+    let favourites = Set(databaseClient.getFavouriteCatBreeds())
+    return catBreeds.map{CatItemViewModel(name: $0.name ?? "Unknow",
+                                          picUrl: $0.image?.url ?? "",
+                                          isFav: favourites.contains($0.id ?? ""))}
   }
 
   private func cacheData(_ catBreed: CatBreed) {
@@ -48,11 +50,6 @@ actor CatManager: CatManagerProtocol {
   func getCatImageUrl(_ imageId: String) async -> URL {
     let catImage = try! await networkClient.getCatImage(id: imageId)
     return URL(string: catImage.url)!
-  }
-
-  func searchByBreed(_ breed: String) async -> [CatBreed] {
-//    try! await networkClient.getCats(by: breed)
-    [CatBreed()]
   }
 
   func getFavourites() async {

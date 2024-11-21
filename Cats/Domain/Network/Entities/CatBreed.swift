@@ -14,6 +14,7 @@ struct CatBreed: Codable {
   }
 
   var weight: Weight?
+  var image: CatImage?
   var id: String?
   var name: String?
   var cfaURL: String?
@@ -53,6 +54,7 @@ struct CatBreed: Codable {
 
   enum CodingKeys: String, CodingKey {
     case weight
+    case image
     case id
     case name
     case cfaURL = "cfa_url"

@@ -23,7 +23,6 @@ extension CatBreedDB {
     @NSManaged public var referenceImageId: String?
     @NSManaged public var origin: String?
     @NSManaged public var temperament: String?
-    @NSManaged public var favourite: Bool
 
 }
 

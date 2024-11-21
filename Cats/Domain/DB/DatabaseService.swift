@@ -11,13 +11,17 @@ import CoreData
 protocol DatabaseService {
   func cacheData(_ catBreed: CatBreed)
   func getCachedCatBreeds() -> [CatBreed]
+  func getFavouriteCatBreeds() -> [String]
 }
 
 class CoredataService: DatabaseService {
   let dataBaseContext: NSManagedObjectContext = PersistenceController.shared.container.viewContext
 
   func cacheData(_ catBreed: CatBreed) {
-    let catEntity = CatBreedDB(context: dataBaseContext)
+    let fetchCat: NSFetchRequest<CatBreedDB> = CatBreedDB.fetchRequest()
+    fetchCat.predicate = NSPredicate(format: "id = %@", catBreed.id!)
+    let results = try? dataBaseContext.fetch(fetchCat)
+    let catEntity: CatBreedDB = ((results?.isEmpty) != nil) ? CatBreedDB(context: dataBaseContext) : results!.first!
     catEntity.id = catBreed.id
     catEntity.name = catBreed.name
     catEntity.temperament = catBreed.temperament
@@ -25,7 +29,6 @@ class CoredataService: DatabaseService {
     catEntity.descriptionText = catBreed.description
     catEntity.lifeSpan = catBreed.lifeSpan
     catEntity.referenceImageId = catBreed.referenceImageID
-    catEntity.favourite = false
     do {
       try dataBaseContext.save()
     } catch {
@@ -47,6 +50,11 @@ class CoredataService: DatabaseService {
       return []
     }
   }
+
+  func getFavouriteCatBreeds() -> [String] {
+    return []
+  }
+
 }
 extension CatBreed {
   init(from catEntity: CatBreedDB) {

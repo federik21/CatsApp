@@ -47,6 +47,8 @@
 		BBA93FE92CEE704900008FF9 /* CatBreedDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE12CEE667E00008FF9 /* CatBreedDB+CoreDataClass.swift */; };
 		BBA93FEA2CEE706500008FF9 /* Cats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1A32CECAC650024CDEF /* Cats.xcdatamodeld */; };
 		BBA93FEB2CEE70DB00008FF9 /* CatBreedDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE22CEE667E00008FF9 /* CatBreedDB+CoreDataProperties.swift */; };
+		BBA93FED2CEF7FE300008FF9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FEC2CEF7FE300008FF9 /* Utils.swift */; };
+		BBA93FEF2CEF817F00008FF9 /* CatItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FEE2CEF817F00008FF9 /* CatItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		BBA93FE12CEE667E00008FF9 /* CatBreedDB+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatBreedDB+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BBA93FE22CEE667E00008FF9 /* CatBreedDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatBreedDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		BBA93FEC2CEF7FE300008FF9 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BBA93FEE2CEF817F00008FF9 /* CatItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
+				BBA93FEE2CEF817F00008FF9 /* CatItemView.swift */,
+				BBA93FEC2CEF7FE300008FF9 /* Utils.swift */,
 				BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */,
 				BB23F1FF2CECF4940024CDEF /* CatViewModel.swift */,
 			);
@@ -392,11 +398,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBA93FED2CEF7FE300008FF9 /* Utils.swift in Sources */,
 				BBA93FE62CEE6E7E00008FF9 /* DatabaseService.swift in Sources */,
 				BB23F1D02CECAEAD0024CDEF /* Router.swift in Sources */,
 				BB23F1D62CECB11C0024CDEF /* CatBreed.swift in Sources */,
 				BB23F1E52CECBD4A0024CDEF /* CatManager.swift in Sources */,
 				BB23F1CB2CECACF00024CDEF /* CatService.swift in Sources */,
+				BBA93FEF2CEF817F00008FF9 /* CatItemView.swift in Sources */,
 				BB23F1C92CECACBB0024CDEF /* NetworkService.swift in Sources */,
 				BB23F2022CECFC9A0024CDEF /* TabbarButton.swift in Sources */,
 				BB23F1A52CECAC650024CDEF /* Cats.xcdatamodeld in Sources */,

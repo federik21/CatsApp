@@ -17,6 +17,7 @@ class CatViewModel: ObservableObject {
 
   @Published var cats: [CatItemViewModel] = []
   @Published var filteredBreeds: [CatItemViewModel] = []
+  @Published var favouriteFilter: [CatItemViewModel] = []
 
   @Published var searchText: String = ""
 
@@ -42,10 +43,7 @@ class CatViewModel: ObservableObject {
 
   @MainActor
   func getAllBreeds() async {
-    cats = await catManager.getAllBreeds().map {
-      CatItemViewModel(name: $0.name!, picUrl: "nil",
-                       isFav: false)
-    }
+    cats = await catManager.getAllBreeds()
   }
 
   func getFilteredBreeds(string text: String) {
