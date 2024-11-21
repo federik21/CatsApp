@@ -153,7 +153,7 @@ class ManagerTests: XCTestCase {
     "wikipedia_url": "https://en.wikipedia.org/wiki/American_Bobtail",
     "hypoallergenic": 0,
     "reference_image_id": "hBXicehMA"
-  },
+  }]
 """.data(using: .utf8)!
     MockURLProtocol.error = nil
     MockURLProtocol.requestHandler = { request in

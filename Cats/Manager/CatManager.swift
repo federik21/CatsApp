@@ -18,7 +18,7 @@ protocol CatManagerProtocol {
   func vote(breed: String, vote: Vote) async
 }
 
-class CatManager: CatManagerProtocol {
+actor CatManager: CatManagerProtocol {
 
   let networkClient: CatNetworkService
   let databaseClient: DatabaseService
@@ -32,16 +32,16 @@ class CatManager: CatManagerProtocol {
   func getAllBreeds() async -> [CatBreed] {
     let catBreeds = try! await networkClient.getBreeds()
     for catBreed in catBreeds {
-      cacheData(catBreed)
+//      cacheData(catBreed)
     }
     return catBreeds
   }
 
-  func cacheData(_ catBreed: CatBreed) {
+  private func cacheData(_ catBreed: CatBreed) {
     databaseClient.cacheData(catBreed)
   }
 
-  func getCachedCatBreeds() -> [CatBreed] {
+  private func getCachedCatBreeds() -> [CatBreed] {
     databaseClient.getCachedCatBreeds()
   }
 
@@ -52,7 +52,7 @@ class CatManager: CatManagerProtocol {
 
   func searchByBreed(_ breed: String) async -> [CatBreed] {
 //    try! await networkClient.getCats(by: breed)
-    []
+    [CatBreed()]
   }
 
   func getFavourites() async {

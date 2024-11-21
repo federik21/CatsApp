@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class CatViewModel: ObservableObject {
 
@@ -15,19 +16,46 @@ class CatViewModel: ObservableObject {
   }
 
   @Published var cats: [CatItemViewModel] = []
-  var mode: ViewFilter = .name
+  @Published var filteredBreeds: [CatItemViewModel] = []
+
+  @Published var searchText: String = ""
+
+  var isSearching : Bool {
+    !searchText.isEmpty
+  }
 
   private var catManager: CatManager
 
+  private var cancellables = Set<AnyCancellable>()
+
   init(catManager: CatManager) {
     self.catManager = catManager
+    addSubscribers()
   }
-  
+
+  func addSubscribers() {
+    $searchText.sink {
+      [weak self] text in
+      self?.getFilteredBreeds(string: text)
+    }.store(in: &cancellables)
+  }
+
+  @MainActor
   func getAllBreeds() async {
     cats = await catManager.getAllBreeds().map {
       CatItemViewModel(name: $0.name!, picUrl: "nil",
                        isFav: false)
     }
+  }
+
+  func getFilteredBreeds(string text: String) {
+    guard isSearching else {
+      filteredBreeds = []
+      return
+    }
+    filteredBreeds = cats.filter({ cat in
+      return cat.name.lowercased().contains(text.lowercased())
+    })
   }
 
   func getCatImageUrl(_ imageId: String?) async -> URL? {
