@@ -11,7 +11,8 @@ struct CatItemView: View {
   @EnvironmentObject var viewModel: CatViewModel
   @State var favourite: Bool = false
   var cat: CatItemModel
-
+  var showLifeSpan: Bool
+  
   var body: some View {
     VStack {
       ZStack(alignment: .topTrailing) {
@@ -43,10 +44,23 @@ struct CatItemView: View {
             .shadow(radius: 3)
         }
       }
-      Text(cat.name)
+      Text(cat.name).font(.title3)
+      if showLifeSpan {
+        Text(getUpperLifespanValue()).font(.footnote)
+
+      }
     }.frame(width: 150, height: 150) // Ensure consistent sizing
       .onAppear {
         favourite = viewModel.isFavourite(cat.id)
       }
+  }
+
+  // Just to avoid incomplete data from BE to make the app crash.
+  fileprivate func getUpperLifespanValue() -> String.SubSequence {
+    let components = cat.lifeSpan.split(separator: "-")
+    if components.count == 2 {
+      return components[1]
+    }
+    return ""
   }
 }

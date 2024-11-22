@@ -42,6 +42,10 @@
 		BB39707A2CEFC68300C182DD /* Favourite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970762CEFC68300C182DD /* Favourite+CoreDataProperties.swift */; };
 		BB39707B2CEFC68300C182DD /* CatBreedDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970772CEFC68300C182DD /* CatBreedDB+CoreDataClass.swift */; };
 		BB39707C2CEFC68300C182DD /* CatBreedDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970782CEFC68300C182DD /* CatBreedDB+CoreDataProperties.swift */; };
+		BB8DFE082CF0CB2F00CADC72 /* CatBreedDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970772CEFC68300C182DD /* CatBreedDB+CoreDataClass.swift */; };
+		BB8DFE092CF0CB3500CADC72 /* CatBreedDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970782CEFC68300C182DD /* CatBreedDB+CoreDataProperties.swift */; };
+		BB8DFE0A2CF0CB3800CADC72 /* Favourite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970762CEFC68300C182DD /* Favourite+CoreDataProperties.swift */; };
+		BB8DFE0B2CF0CB3B00CADC72 /* Favourite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3970752CEFC68300C182DD /* Favourite+CoreDataClass.swift */; };
 		BBA93FD42CEDFA3400008FF9 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F1EC2CECBEBA0024CDEF /* MockNetworkService.swift */; };
 		BBA93FE62CEE6E7E00008FF9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */; };
 		BBA93FE72CEE6FB000008FF9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA93FE52CEE6E7E00008FF9 /* DatabaseService.swift */; };
@@ -368,6 +372,8 @@
 				Base,
 			);
 			mainGroup = BB23F18C2CECAC630024CDEF;
+			packageReferences = (
+			);
 			productRefGroup = BB23F1962CECAC630024CDEF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -446,16 +452,20 @@
 				BB23F1AF2CECAC650024CDEF /* CatsTests.swift in Sources */,
 				BBA93FEA2CEE706500008FF9 /* Cats.xcdatamodeld in Sources */,
 				BB23F1ED2CECBEBA0024CDEF /* MockNetworkService.swift in Sources */,
+				BB8DFE0B2CF0CB3B00CADC72 /* Favourite+CoreDataClass.swift in Sources */,
 				BB23F1E82CECBE660024CDEF /* NetworkTests.swift in Sources */,
 				BB23F1F42CECBF0A0024CDEF /* CatBreed.swift in Sources */,
+				BB8DFE082CF0CB2F00CADC72 /* CatBreedDB+CoreDataClass.swift in Sources */,
 				BB23F1F52CECBF0A0024CDEF /* CatImage.swift in Sources */,
 				BB23F1FD2CECD9A80024CDEF /* CatManager.swift in Sources */,
 				BB23F1F62CECBF0A0024CDEF /* NetworkError.swift in Sources */,
+				BB8DFE092CF0CB3500CADC72 /* CatBreedDB+CoreDataProperties.swift in Sources */,
 				BBA93FE72CEE6FB000008FF9 /* DatabaseService.swift in Sources */,
 				BBA93FE82CEE704200008FF9 /* Persistence.swift in Sources */,
 				BB23F1F72CECBF0A0024CDEF /* CatService.swift in Sources */,
 				BB23F1F82CECBF0A0024CDEF /* Router.swift in Sources */,
 				BB23F1F92CECBF0A0024CDEF /* DefaultResponse.swift in Sources */,
+				BB8DFE0A2CF0CB3800CADC72 /* Favourite+CoreDataProperties.swift in Sources */,
 				BB23F1FA2CECBF0A0024CDEF /* NetworkService.swift in Sources */,
 				BB23F1FC2CECD9840024CDEF /* ManagerTests.swift in Sources */,
 			);

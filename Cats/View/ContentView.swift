@@ -21,7 +21,8 @@ struct ContentView: View {
           LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
             ForEach((getBreedsToShow()), id: \.self) { item in
               NavigationLink(destination: DetailView(cat: item)) {
-                CatItemView(cat: item)
+                CatItemView(cat: item,
+                            showLifeSpan: selectedTab == 1 && viewModel.isFavourite(item.id))
               }
             }
           }

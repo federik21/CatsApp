@@ -9,13 +9,13 @@ import Foundation
 import CoreData
 
 protocol DatabaseService {
-  func cacheData(_ catBreed: CatBreed)
-  func getCachedCatBreeds() -> [CatBreed]
-  func getFavouriteCatBreeds() -> [String]
-  func toggleFavorite(_ breedId: String, _ isFavourite: Bool)
+  func cacheData(_ catBreed: CatBreed) async
+  func getCachedCatBreeds() async -> [CatBreed]
+  func getFavouriteCatBreeds() async -> [String]
+  func toggleFavorite(_ breedId: String, _ isFavourite: Bool) async
 }
 
-class CoredataService: DatabaseService {
+actor CoredataService: DatabaseService {
   let dataBaseContext: NSManagedObjectContext = PersistenceController.shared.container.viewContext
 
   func cacheData(_ catBreed: CatBreed) {
@@ -58,7 +58,7 @@ class CoredataService: DatabaseService {
     fetchRequest.relationshipKeyPathsForPrefetching = ["cat"]
     do {
       let fav = try dataBaseContext.fetch(fetchRequest)
-      return fav.map{$0.cat!.id!}
+      return fav.map{$0.cat?.id ?? ""}.filter{$0 != ""}
     } catch {
       print("Failed to fetch cats: \(error)")
       return []

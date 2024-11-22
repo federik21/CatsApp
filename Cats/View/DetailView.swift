@@ -69,4 +69,4 @@ struct DetailView: View {
       favourite = viewModel.isFavourite(cat.id)
     }
   }
-  }
+}

@@ -28,38 +28,41 @@ actor CatManager: CatManagerProtocol {
     var cats = [CatBreed]()
     if let catBreeds = try? await networkClient.getBreeds() {
       for catBreed in catBreeds {
-        cacheData(catBreed)
+        await cacheData(catBreed)
       }
       cats = catBreeds
     } else {
-      cats = getCachedCatBreeds()
+      cats = await getCachedCatBreeds()
     }
     return cats.map{CatItemModel(id: $0.id ?? "",
-                                          name: $0.name ?? "Unknow",
-                                          origin: $0.origin ?? "Unknow",
-                                          temperament: $0.temperament ?? "Unknow",
-                                          description: $0.description ?? "Unknow",
-                                          picUrl: $0.image?.url ?? "")}
+                                 name: $0.name ?? "Unknow",
+                                 origin: $0.origin ?? "Unknow",
+                                 lifeSpan: $0.lifeSpan ?? "Unknow",
+                                 temperament: $0.temperament ?? "Unknow",
+                                 description: $0.description ?? "Unknow",
+                                 picUrl: $0.image?.url ?? "")}
   }
 
-  private func cacheData(_ catBreed: CatBreed) {
-    databaseClient.cacheData(catBreed)
+  private func cacheData(_ catBreed: CatBreed) async {
+    await databaseClient.cacheData(catBreed)
   }
 
-  private func getCachedCatBreeds() -> [CatBreed] {
-    databaseClient.getCachedCatBreeds()
+  private func getCachedCatBreeds() async ->  [CatBreed]  {
+    await databaseClient.getCachedCatBreeds()
   }
 
-  func getCatImageUrl(_ imageId: String) async -> URL {
-    let catImage = try! await networkClient.getCatImage(id: imageId)
-    return URL(string: catImage.url)!
+  func getCatImageUrl(_ imageId: String) async -> URL? {
+    if let catImage = try? await networkClient.getCatImage(id: imageId) {
+      return URL(string: catImage.url)
+    }
+    return nil
   }
 
-  func getFavourites() -> Set<String> {
-    Set(databaseClient.getFavouriteCatBreeds())
+  func getFavourites() async -> Set<String> {
+    Set(await databaseClient.getFavouriteCatBreeds())
   }
 
   func setFavourite(_ id: String, _ favourite: Bool) async {
-    databaseClient.toggleFavorite(id, favourite)
+    await databaseClient.toggleFavorite(id, favourite)
   }
 }
