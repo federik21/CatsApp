@@ -21,7 +21,7 @@ The main language of the app is Swift 5.6, UI was developed using SwiftUI, I hav
 * The ViewModel will get the data from the model, and propagate any user input or interactions to be handled.
 
 # Structure 
-* "View": Contains Views and ViewModels. Having a single "main" view and a viewmodel doesnt' make much sense to have different groups (for now).
+* "View": Contains Views and ViewModels. The viewmodel is shared as environmental object across multiple screens/views, so it is separate.
 * "Manager": It is the main interactor with the Domain level and the ViewModel level. In this way, the Viewmodel doesn't even know where the data is from,
 * and doesn't even have to integrate it from different sources. All the logic is inside the manager, which needs a database and a network client.
 * "Domain": It contains the two domains of the app, the database and the network client. The DB implementation in CoreData contains 2 entities
@@ -31,10 +31,9 @@ Deletion has been handled accordingly with the direction.
 
 # Running the tests
 <p>The Cat App can be tested using the built-in framework XCTest.<br>
+There is room for improving if integrating frameworks for mocking data, and mocking the DB, which is mostly untested.
 
 # Deployment
-Keep in mind that deploying an iOS app to the App Store requires having an Apple Developer account.
-
 1. Click on the "Product" menu in Xcode and select "Archive." This will create an archive of your project.
 2. Once the archive has been created, select it in the Organizer window and click on the "Validate" button to perform some preliminary tests on the app.
 3. Once validation is complete, click on the "Distribute" button and select "Ad Hoc" or "App Store" distribution. 
