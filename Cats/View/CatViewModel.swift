@@ -10,16 +10,11 @@ import SwiftUI
 import Combine
 
 class CatViewModel: ObservableObject {
-
-  enum ViewFilter {
-    case name, favs
-  }
-
-  @Published var cats: [CatItemViewModel] = []
-  @Published var filteredBreeds: [CatItemViewModel] = []
-  @Published var favouriteFilter: [CatItemViewModel] = []
-
+  @Published var cats: [CatItemModel] = []
+  @Published var filteredBreeds: [CatItemModel] = []
   @Published var searchText: String = ""
+
+  private var favourites = Set<String>()
 
   var isSearching : Bool {
     !searchText.isEmpty
@@ -43,6 +38,7 @@ class CatViewModel: ObservableObject {
 
   @MainActor
   func getAllBreeds() async {
+    favourites = await catManager.getFavourites()
     cats = await catManager.getAllBreeds()
   }
 
@@ -56,14 +52,13 @@ class CatViewModel: ObservableObject {
     })
   }
 
-  func getCatImageUrl(_ imageId: String?) async -> URL? {
-    guard let image = imageId else { return nil }
-    return await catManager.getCatImageUrl(image)
+  func isFavourite(_ breedId: String) -> Bool {
+    favourites.contains(breedId)
   }
-}
 
-struct CatItemViewModel: Hashable {
-  var name: String
-  var picUrl: String
-  var isFav: Bool
+  @MainActor
+  func setFavorite(_ breedId: String) async {
+    await catManager.setFavourite(breedId, !isFavourite(breedId))
+    favourites = await catManager.getFavourites()
+  }
 }

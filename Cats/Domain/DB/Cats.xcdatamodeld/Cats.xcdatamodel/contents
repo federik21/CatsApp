@@ -8,6 +8,9 @@
         <attribute name="origin" optional="YES" attributeType="String"/>
         <attribute name="referenceImageId" optional="YES" attributeType="String"/>
         <attribute name="temperament" optional="YES" attributeType="String"/>
-        <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CatBreedDB"/>
+        <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Favourite" inverseName="cat" inverseEntity="Favourite"/>
+    </entity>
+    <entity name="Favourite" representedClassName="Favourite" syncable="YES">
+        <relationship name="cat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CatBreedDB" inverseName="favourite" inverseEntity="CatBreedDB"/>
     </entity>
 </model>

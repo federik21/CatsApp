@@ -12,16 +12,15 @@ protocol DatabaseService {
   func cacheData(_ catBreed: CatBreed)
   func getCachedCatBreeds() -> [CatBreed]
   func getFavouriteCatBreeds() -> [String]
+  func toggleFavorite(_ breedId: String, _ isFavourite: Bool)
 }
 
 class CoredataService: DatabaseService {
   let dataBaseContext: NSManagedObjectContext = PersistenceController.shared.container.viewContext
 
   func cacheData(_ catBreed: CatBreed) {
-    let fetchCat: NSFetchRequest<CatBreedDB> = CatBreedDB.fetchRequest()
-    fetchCat.predicate = NSPredicate(format: "id = %@", catBreed.id!)
-    let results = try? dataBaseContext.fetch(fetchCat)
-    let catEntity: CatBreedDB = ((results?.isEmpty) != nil) ? CatBreedDB(context: dataBaseContext) : results!.first!
+    guard let catId = catBreed.id else { return }
+    let catEntity = getCatWithId(catId) ?? CatBreedDB(context: dataBaseContext)
     catEntity.id = catBreed.id
     catEntity.name = catBreed.name
     catEntity.temperament = catBreed.temperament
@@ -29,11 +28,14 @@ class CoredataService: DatabaseService {
     catEntity.descriptionText = catBreed.description
     catEntity.lifeSpan = catBreed.lifeSpan
     catEntity.referenceImageId = catBreed.referenceImageID
-    do {
-      try dataBaseContext.save()
-    } catch {
-      print("Failed to save CatBreed: \(error)")
-    }
+    saveContext(context: dataBaseContext)
+  }
+
+  private func getCatWithId(_ id: String) -> CatBreedDB? {
+    let fetchCat: NSFetchRequest<CatBreedDB> = CatBreedDB.fetchRequest()
+    fetchCat.predicate = NSPredicate(format: "id = %@", id)
+    let results = try? dataBaseContext.fetch(fetchCat)
+    return results?.first
   }
 
   func getCachedCatBreeds() -> [CatBreed] {
@@ -52,9 +54,38 @@ class CoredataService: DatabaseService {
   }
 
   func getFavouriteCatBreeds() -> [String] {
-    return []
+    let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+    fetchRequest.relationshipKeyPathsForPrefetching = ["cat"]
+    do {
+      let fav = try dataBaseContext.fetch(fetchRequest)
+      return fav.map{$0.cat!.id!}
+    } catch {
+      print("Failed to fetch cats: \(error)")
+      return []
+    }
   }
 
+  func toggleFavorite(_ breedId: String, _ isFavourite: Bool) {
+    guard let catEntity = getCatWithId(breedId) else { return }
+    if isFavourite {
+      let favourite = Favourite(context: dataBaseContext)
+      favourite.cat = catEntity
+    } else if let currentFavourite = catEntity.favourite {
+      dataBaseContext.delete(currentFavourite)
+    }
+    saveContext(context: dataBaseContext)
+  }
+
+  private func saveContext(context: NSManagedObjectContext) {
+    if context.hasChanges {
+      do {
+        try context.save()
+      } catch {
+        let nsError = error as NSError
+        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+      }
+    }
+  }
 }
 extension CatBreed {
   init(from catEntity: CatBreedDB) {
