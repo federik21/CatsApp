@@ -7,14 +7,10 @@
 
 import Foundation
 
-enum Vote {
-  case up, down, neutral
-}
-
 protocol CatManagerProtocol {
-  func getFavourites() async
-  func getAllBreeds() async -> [CatItemViewModel]
-  func vote(breed: String, vote: Vote) async
+  func getAllBreeds() async -> [CatItemModel]
+  func getFavourites() async -> Set<String>
+  func setFavourite(_ id: String, _ favourite: Bool) async
 }
 
 actor CatManager: CatManagerProtocol {
@@ -28,15 +24,22 @@ actor CatManager: CatManagerProtocol {
     self.databaseClient = databaseClient
   }
 
-  func getAllBreeds() async -> [CatItemViewModel] {
-    let catBreeds = try! await networkClient.getBreeds()
-    for catBreed in catBreeds {
-      cacheData(catBreed)
+  func getAllBreeds() async -> [CatItemModel] {
+    var cats = [CatBreed]()
+    if let catBreeds = try? await networkClient.getBreeds() {
+      for catBreed in catBreeds {
+        cacheData(catBreed)
+      }
+      cats = catBreeds
+    } else {
+      cats = getCachedCatBreeds()
     }
-    let favourites = Set(databaseClient.getFavouriteCatBreeds())
-    return catBreeds.map{CatItemViewModel(name: $0.name ?? "Unknow",
-                                          picUrl: $0.image?.url ?? "",
-                                          isFav: favourites.contains($0.id ?? ""))}
+    return cats.map{CatItemModel(id: $0.id ?? "",
+                                          name: $0.name ?? "Unknow",
+                                          origin: $0.origin ?? "Unknow",
+                                          temperament: $0.temperament ?? "Unknow",
+                                          description: $0.description ?? "Unknow",
+                                          picUrl: $0.image?.url ?? "")}
   }
 
   private func cacheData(_ catBreed: CatBreed) {
@@ -52,9 +55,11 @@ actor CatManager: CatManagerProtocol {
     return URL(string: catImage.url)!
   }
 
-  func getFavourites() async {
+  func getFavourites() -> Set<String> {
+    Set(databaseClient.getFavouriteCatBreeds())
   }
 
-  func vote(breed: String, vote: Vote) async {
+  func setFavourite(_ id: String, _ favourite: Bool) async {
+    databaseClient.toggleFavorite(id, favourite)
   }
 }

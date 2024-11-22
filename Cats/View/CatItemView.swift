@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CatItemView: View {
-  var item: CatItemViewModel
+  @EnvironmentObject var viewModel: CatViewModel
+  @State var favourite: Bool = false
+  var cat: CatItemModel
+
   var body: some View {
     VStack {
       ZStack(alignment: .topTrailing) {
-        AsyncImage(url: URL(string: item.picUrl)) { imagePhase in
+        AsyncImage(url: URL(string: cat.picUrl)) { imagePhase in
           switch imagePhase {
           case .success(let image):
             image
@@ -26,19 +29,24 @@ struct CatItemView: View {
             ProgressView()
           }
         }
-        // Star overlay
-        Image(systemName: item.isFav ? "star.fill" : "star")
-          .foregroundColor(item.isFav ? .yellow : .black)
-          .padding(8)
-          .background(Circle().fill(Color.white))
-          .shadow(radius: 3)
+        Button(action: {
+          Task{
+            await viewModel.setFavorite(cat.id)
+            favourite = viewModel.isFavourite(cat.id)
+          }
+        }) {
+          // Star overlay
+          Image(systemName: favourite ? "star.fill" : "star")
+            .foregroundColor(favourite ? .yellow : .black)
+            .padding(8)
+            .background(Circle().fill(Color.white))
+            .shadow(radius: 3)
+        }
       }
-      Text(item.name)
+      Text(cat.name)
     }.frame(width: 150, height: 150) // Ensure consistent sizing
-
-  }
-
-  init(item: CatItemViewModel){
-    self.item = item
+      .onAppear {
+        favourite = viewModel.isFavourite(cat.id)
+      }
   }
 }

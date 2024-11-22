@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension View {
+  // Display the search bar only if if a condition is met.
   @ViewBuilder
   func searchable(_ condition: Bool, text: Binding<String>,placement: SearchFieldPlacement = .automatic,prompt: String) -> some View {
     if condition {
