@@ -262,15 +262,47 @@
 		BB23F1FE2CECF4880024CDEF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
-				BBA93FF62CEFA69800008FF9 /* DetailView.swift */,
-				BBA93FEE2CEF817F00008FF9 /* CatItemView.swift */,
-				BBA93FEC2CEF7FE300008FF9 /* Utils.swift */,
-				BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */,
+				BB93D6142CF0DBB600D3288D /* Home */,
+				BB93D6152CF0DBC400D3288D /* Detail */,
+				BB93D6122CF0DB8C00D3288D /* ViewModel */,
+				BB93D6132CF0DB9C00D3288D /* Utils */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB93D6122CF0DB8C00D3288D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				BB23F1FF2CECF4940024CDEF /* CatViewModel.swift */,
 				BBA93FF02CEFA49100008FF9 /* CatItemModel.swift */,
 			);
-			path = View;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BB93D6132CF0DB9C00D3288D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BBA93FEC2CEF7FE300008FF9 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BB93D6142CF0DBB600D3288D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BB23F19A2CECAC630024CDEF /* ContentView.swift */,
+				BBA93FEE2CEF817F00008FF9 /* CatItemView.swift */,
+				BB23F2012CECFC9A0024CDEF /* TabbarButton.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BB93D6152CF0DBC400D3288D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BBA93FF62CEFA69800008FF9 /* DetailView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		BBA93FD92CEE627300008FF9 /* Entities */ = {
